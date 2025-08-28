@@ -1,4 +1,17 @@
-function Header() {
+import { useState } from 'react'
+  // const savedEmails = null;
+
+function Header(emails, setSearchEmails) {
+  const [searchTerm, setSearchterm]  = useState('')
+
+
+  const  search = (value) => {
+    // console.log(emails)
+    setSearchterm(value)
+
+    setSearchEmails(emails.filter(email => email.title.toLowerCase().includes(value.toLowerCase())))
+  };
+
   return <header className="header">
     <div className="left-menu">
       <svg className="menu-icon" focusable="false" viewBox="0 0 24 24">
@@ -11,7 +24,10 @@ function Header() {
     </div>
 
     <div className="search">
-      <input className="search-bar" placeholder="Search mail" />
+      <input className="search-bar" placeholder="Search mail" value={searchTerm}
+      onChange={e => search(e.target.value)} 
+      >
+      </input>
     </div>
   </header>
 }
