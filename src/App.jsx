@@ -18,23 +18,7 @@ function App() {
   const unreadEmails = emails.filter(email => !email.read)
   const starredEmails = emails.filter(email => email.starred)
 
-  const toggleStar = targetEmail => {
-    const updatedEmails = emails =>
-      emails.map(email =>
-        email.id === targetEmail.id
-          ? { ...email, starred: !email.starred }
-          : email
-      )
-    setEmails(updatedEmails)
-  }
-
-  const toggleRead = targetEmail => {
-    const updatedEmails = emails =>
-      emails.map(email =>
-        email.id === targetEmail.id ? { ...email, read: !email.read } : email
-      )
-    setEmails(updatedEmails)
-  }
+ 
 
   let filteredEmails = emails
 
@@ -89,7 +73,7 @@ function App() {
           </li>
         </ul>
       </nav>
-      {emailList(filteredEmails, toggleRead, toggleStar)}
+      {emailList(filteredEmails, setEmails)}
     </div>
   )
 }

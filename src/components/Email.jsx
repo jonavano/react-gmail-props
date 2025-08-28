@@ -1,5 +1,24 @@
 
-function Email(index, email, toggleRead, toggleStar) {
+function Email(index, email, setEmails) {
+
+  const toggleRead = targetEmail => {
+    const updatedEmails = emails =>
+      emails.map(email =>
+        email.id === targetEmail.id ? { ...email, read: !email.read } : email
+      )
+    setEmails(updatedEmails)
+  }
+
+  const toggleStar = targetEmail => {
+    const updatedEmails = emails =>
+      emails.map(email =>
+        email.id === targetEmail.id
+          ? { ...email, starred: !email.starred }
+          : email
+      )
+    setEmails(updatedEmails)
+  }
+
   return <li
     key={index}
     className={`email ${email.read ? 'read' : 'unread'}`}
