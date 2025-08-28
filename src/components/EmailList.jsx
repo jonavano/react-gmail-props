@@ -3,11 +3,11 @@
 import Email from "./Email";
 
 
-function EmailList(filteredEmails, setEmails) {
+function EmailList(filteredEmails, setEmails, setSelectedEmail) {
   return <main className="emails">
     <ul>
       {filteredEmails.map((email, index) => (
-        Email(index, email, setEmails)
+        Email(index, email, setEmails, setSelectedEmail)
         // <Email key={index} email={email} toggleRead={toggleRead} toggleStar={toggleStar} />
       ))}
     </ul>
